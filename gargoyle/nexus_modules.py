@@ -289,7 +289,7 @@ class GargoyleModule(nexus.NexusModule):
         switch = gargoyle[key]
         switch.remove_condition(condition_set_id, field_name, value)
 
-        logger.info('Condition added to %r (%r, %s=%r, exclude=%r)' % (switch.key,
+        logger.info('Condition removed from %r (%r, %s=%r)' % (switch.key,
             condition_set_id, field_name, value))
 
         signals.switch_condition_removed.send(
