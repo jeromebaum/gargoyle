@@ -142,8 +142,8 @@ class GargoyleModule(nexus.NexusModule):
         if not created:
             raise GargoyleException("Switch with key %s already exists" % key)
 
-        logger.info('Switch %r added (%%s)' % switch.key,
-            ', '.join('%s=%r' % (k, getattr(switch, k)) for k in sorted(('key', 'label', 'description', ))))
+        logger.info('Switch %r added (%%s)' % (switch.key,
+            ', '.join('%s=%r' % (k, getattr(switch, k)) for k in sorted(('key', 'label', 'description', )))))
 
         signals.switch_added.send(
             sender=self,
@@ -188,8 +188,8 @@ class GargoyleModule(nexus.NexusModule):
             switch.description = request.POST.get("desc")
             switch.save()
 
-            logger.info('Switch %r updated %%s' % switch.key,
-                ', '.join('%s=%r->%r' % (k, v[0], v[1]) for k, v in sorted(changes.iteritems())))
+            logger.info('Switch %r updated %%s' % (switch.key,
+                ', '.join('%s=%r->%r' % (k, v[0], v[1]) for k, v in sorted(changes.iteritems()))))
 
             signals.switch_updated.send(
                 sender=self,
@@ -216,8 +216,8 @@ class GargoyleModule(nexus.NexusModule):
             switch.status = status
             switch.save()
 
-            logger.info('Switch %r updated (status=%%s->%%s)' % switch.key,
-                old_status_label, switch.get_status_display())
+            logger.info('Switch %r updated (status=%%s->%%s)' % (switch.key,
+                old_status_label, switch.get_status_display()))
 
             signals.switch_status_updated.send(
                 sender=self,
@@ -260,8 +260,8 @@ class GargoyleModule(nexus.NexusModule):
         switch = gargoyle[key]
         switch.add_condition(condition_set_id, field_name, value, exclude=exclude)
 
-        logger.info('Condition added to %r (%r, %%s=%%r, exclude=%r)' % switch.key,
-            condition_set_id, field_name, value, bool(exclude))
+        logger.info('Condition added to %r (%r, %%s=%%r, exclude=%r)' % (switch.key,
+            condition_set_id, field_name, value, bool(exclude)))
 
         signals.switch_condition_added.send(
             sender=self,
@@ -289,8 +289,8 @@ class GargoyleModule(nexus.NexusModule):
         switch = gargoyle[key]
         switch.remove_condition(condition_set_id, field_name, value)
 
-        logger.info('Condition added to %r (%r, %%s=%%r, exclude=%r)' % switch.key,
-            condition_set_id, field_name, value)
+        logger.info('Condition added to %r (%r, %%s=%%r, exclude=%r)' % (switch.key,
+            condition_set_id, field_name, value))
 
         signals.switch_condition_removed.send(
             sender=self,
