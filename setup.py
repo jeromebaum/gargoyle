@@ -8,7 +8,7 @@ except:
     pass
 
 tests_require = [
-    'Django>=1.2,<1.5',
+    'Django>=1.3,<1.5',
     'django-nose',
     'nose',
     'pyflakes',
@@ -29,7 +29,7 @@ dependency_links = [
 
 setup(
     name='gargoyle',
-    version='0.9.0',
+    version='0.9.0.dev.1',
     author='DISQUS',
     author_email='opensource@disqus.com',
     url='http://github.com/disqus/gargoyle',
